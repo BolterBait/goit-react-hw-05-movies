@@ -1,10 +1,12 @@
 import { getMovieInfo } from 'api/api';
 import { Suspense, useState, useEffect } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
-import { CardWrapper, Container } from './MovieInfo.styled';
 import { posterBaseUrl } from 'const/secureBaseUrl';
+import { Loader } from 'components/Loader/Loader';
 
-export const MovieInfo = () => {
+import { CardWrapper, Container } from './MovieInfo.styled';
+
+const MovieInfo = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const location = useLocation();
@@ -71,9 +73,11 @@ export const MovieInfo = () => {
           </ul>
         </div>
       </Container>
-      <Suspense>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>
   );
 };
+
+export default MovieInfo;

@@ -6,8 +6,3 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
  `;
-
-export const CardWrapper = styled.div`
-  border: none;
-`;
-
