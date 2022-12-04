@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import { getTrendingMovies } from 'api/api';
 import { posterBaseUrl } from 'const/secureBaseUrl';
 import no_poster from 'images/no_poster.jpg';
+
 import { Container, CardWrapper } from 'components/Movies/MovieList.styled';
 
 export const MovieList = ({ list }) => {
@@ -42,4 +45,8 @@ export const MovieList = ({ list }) => {
       ))}
     </Container>
   );
+};
+
+MovieList.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.object),
 };
