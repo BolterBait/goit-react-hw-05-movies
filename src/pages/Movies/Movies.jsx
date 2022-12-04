@@ -9,7 +9,7 @@ import { MovieList } from 'components/Movies/MovieList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 import { ErrorMessage } from 'components/ErrorMessage/ErrorMessage';
 
-import { Container } from './Movies.styles';
+import { Container } from './Movies.styled';
 
 const Movies = () => {
   const [query, setQuery] = useState('');
@@ -33,11 +33,11 @@ const Movies = () => {
 
       const movies = await getMovieByName(newQuery);
       if (!movies.length) {
-        setError(true);
+        setError(false);
         return;
       }
       setMovieList(movies);
-      setError(false);
+      setError(true);
     } catch {
       console.error(error);
     } finally {
@@ -59,7 +59,7 @@ const Movies = () => {
     <Container>
       <SearchForm onSubmit={getQuery} toast={toast.warning} />
       {isLoading && <Loader />}
-      {error === true ? (
+      {error === false ? (
         <ErrorMessage text={'Sorry, no match your search'} />
       ) : (
         <MovieList list={movieList} />

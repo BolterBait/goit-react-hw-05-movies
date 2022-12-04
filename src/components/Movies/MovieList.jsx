@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { getTrendingMovies } from 'api/api';
 import { posterBaseUrl } from 'const/secureBaseUrl';
+import no_poster from 'images/no_poster.jpg';
 import { Container, CardWrapper } from 'components/Movies/MovieList.styled';
 
 export const MovieList = ({ list }) => {
@@ -32,9 +33,10 @@ export const MovieList = ({ list }) => {
         <CardWrapper key={id}>
           <NavLink to={`${currentUrl}${id}`} state={{ from: location }}>
             <img
-              src={poster_path ? posterBaseUrl + poster_path : 'no_poster'}
+              src={poster_path ? posterBaseUrl + poster_path : no_poster}
               alt={title}
             />
+            <p>{title}</p>
           </NavLink>
         </CardWrapper>
       ))}

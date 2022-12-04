@@ -1,16 +1,11 @@
 import { getMovieInfo } from 'api/api';
 import { Suspense, useState, useEffect } from 'react';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import { posterBaseUrl } from 'const/secureBaseUrl';
 import { Loader } from 'components/Loader/Loader';
+import no_poster from 'images/no_poster.jpg';
 
-import { CardWrapper, Container } from './MovieInfo.styled';
+import { CardWrapper, Container, BackLink } from './MovieInfo.styled';
 
 const MovieInfo = () => {
   const { movieId } = useParams();
@@ -38,11 +33,11 @@ const MovieInfo = () => {
 
   return (
     <div>
-      <Link to={goBackLink}>Go Back</Link>
+      <BackLink to={goBackLink}>Go Back</BackLink>
       <Container>
         <CardWrapper>
           <img
-            src={poster_path ? posterBaseUrl + poster_path : 'no_poster'}
+            src={poster_path ? posterBaseUrl + poster_path : no_poster}
             alt={title}
           />
         </CardWrapper>

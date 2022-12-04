@@ -2,7 +2,7 @@
   "name": "movie-base",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bolterbait.github.io/react-homework-template/",
+  "homepage": "https://bolterbait.github.io/goit-react-hw-05-movies/",
   "dependencies": {
     "axios": "^1.2.0",
     "react": "^18.1.0",

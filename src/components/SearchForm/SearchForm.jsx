@@ -7,8 +7,12 @@ export const SearchForm = ({ onSubmit, toast }) => {
   const [query, setQuery] = useState('');
 
   const onChange = e => {
-    const value = e.currentTarget.value.trim().toLowerCase();
+    const value = e.target.value.toLowerCase();
     setQuery(value);
+  };
+
+  const reset = () => {
+    setQuery('');
   };
 
   const handleSubmit = e => {
@@ -18,7 +22,7 @@ export const SearchForm = ({ onSubmit, toast }) => {
       return;
     }
     onSubmit(query);
-    setQuery('');
+    reset();
   };
 
   return (

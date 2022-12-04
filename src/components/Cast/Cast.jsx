@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getMovieCast } from 'api/api';
+import no_poster from 'images/no_poster.jpg';
 
 import { ErrorMessage } from 'components/ErrorMessage/ErrorMessage';
 import { posterBaseUrl } from 'const/secureBaseUrl';
@@ -35,7 +36,7 @@ const Cast = () => {
           {actorsList.map(({ name, profile_path, character }) => (
             <li key={name}>
               <img
-                src={profile_path ? posterBaseUrl + profile_path : 'No photo'}
+                src={profile_path ? posterBaseUrl + profile_path : no_poster}
                 alt={name}
               ></img>
               <p>

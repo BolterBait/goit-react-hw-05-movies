@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -10,3 +11,7 @@ export const CardWrapper = styled.div`
   border: none;
 `;
 
+export const BackLink = styled(Link)`
+position: absolute;
+right: 40px;
+`
