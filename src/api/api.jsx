@@ -15,7 +15,9 @@ export async function getTrendingMovies() {
 
 export async function getMovieByName(query) {
   try {
-    const response = await axios.get(`search/movie?api_key=${API_KEY}`);
+    const response = await axios.get(
+      `search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false`
+    );
     return response.data.results;
   } catch (error) {
     console.error(error);
@@ -24,8 +26,10 @@ export async function getMovieByName(query) {
 
 export async function getMovieInfo(movieId) {
   try {
-    const response = await axios.get(`movie/${movieId}?api_key=${API_KEY}`);
-    return response.data.results;
+    const response = await axios.get(
+      `movie/${movieId}?api_key=${API_KEY}&language=en-US`
+    );
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -34,9 +38,9 @@ export async function getMovieInfo(movieId) {
 export async function getMovieCast(movieId) {
   try {
     const response = await axios.get(
-      `movie/${movieId}/credits?api_key=${API_KEY}`
+      `movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
     );
-    return response.data.results;
+    return response.data.cast;
   } catch (error) {
     console.error(error);
   }
@@ -45,7 +49,7 @@ export async function getMovieCast(movieId) {
 export async function getMovieReviews(movieId) {
   try {
     const response = await axios.get(
-      `movie/${movieId}/reviews?api_key=${API_KEY}`
+      `movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
     );
     return response.data.results;
   } catch (error) {

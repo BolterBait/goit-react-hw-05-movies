@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getTrendingMovies } from 'api/api';
 import { posterBaseUrl } from 'const/secureBaseUrl';
 import { Container, CardWrapper } from 'components/Movies/MovieList.styled';
@@ -30,12 +30,12 @@ export const MovieList = ({ list }) => {
     <Container>
       {movies.map(({ id, title, poster_path }) => (
         <CardWrapper key={id}>
-          <Link to={`${currentUrl}${id}`} state={{ from: location }}>
+          <NavLink to={`${currentUrl}${id}`} state={{ from: location }}>
             <img
               src={poster_path ? posterBaseUrl + poster_path : 'no_poster'}
               alt={title}
             />
-          </Link>
+          </NavLink>
         </CardWrapper>
       ))}
     </Container>

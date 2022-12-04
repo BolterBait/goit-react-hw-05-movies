@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { SearchButton, Form, Input } from './SearchForm.styled';
 
@@ -6,14 +7,15 @@ export const SearchForm = ({ onSubmit, toast }) => {
   const [query, setQuery] = useState('');
 
   const onChange = e => {
-    const value = e.target.value.trim().toLowerCase();
+    const value = e.currentTarget.value.trim().toLowerCase();
     setQuery(value);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
     if (!query) {
-      return toast('Write something, please.');
+      toast('Write something, please.');
+      return;
     }
     onSubmit(query);
     setQuery('');
@@ -33,4 +35,9 @@ export const SearchForm = ({ onSubmit, toast }) => {
       />
     </Form>
   );
+};
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  toast: PropTypes.func.isRequired,
 };

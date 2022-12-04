@@ -1,6 +1,12 @@
 import { getMovieInfo } from 'api/api';
 import { Suspense, useState, useEffect } from 'react';
-import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { posterBaseUrl } from 'const/secureBaseUrl';
 import { Loader } from 'components/Loader/Loader';
 
@@ -64,11 +70,15 @@ const MovieInfo = () => {
           </ul>
           <h3>Additional information</h3>
           <ul>
-            <li to="cast" state={{ from: goBackLink }}>
-              Cast
+            <li>
+              <NavLink to="cast" state={{ from: goBackLink }}>
+                Cast
+              </NavLink>
             </li>
-            <li to="reviews" state={{ from: goBackLink }}>
-              Reviews
+            <li>
+              <NavLink to="reviews" state={{ from: goBackLink }}>
+                Reviews
+              </NavLink>
             </li>
           </ul>
         </div>
